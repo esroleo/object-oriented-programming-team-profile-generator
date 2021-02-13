@@ -1,8 +1,12 @@
+
+// import inquirer libraries
 const inquirer = require('inquirer');
+
+// *** Import all empoloyee classes *** //
 const Employee = require('./lib/Employee');
-
-
-var test = "Engineer";
+const Manager = require('./lib/Manager');
+const Engineer = require('./lib/Engineer');
+const Intern = require('./lib/Intern');
 
 
 // *** Manager's response area *** //
@@ -31,8 +35,26 @@ const promptManager = () => {
             name: 'phoneNumber',
             message: "What is the team manager's office number?",
         }
-    ])
+    ])//.then( answers => {
+    //    console.log(answers);
+    // })
 }
+
+// *** Call Employee Oject population *** //
+
+// const employee = new Employee(
+//     promptManager()
+//     .then(answers => {
+//         return answers
+
+//     })
+//     .catch(err => {
+//         console.log(err);
+//         })
+//     );
+
+// console.log(employee);
+
 
 
 
@@ -118,22 +140,147 @@ const memberDetails = memberDetails  => {
 //promptMemberType();
 
 
-promptManager()
-    //.then(promptMemberType)
-    .then(obj=> {
-         const employee = new Employee(obj);
-         return employee
-    })
-    .then(memberDetails)
-    .then(answers => {
-        //console.log(answers)
-        //return generateReadMe(answers);
-    })
-    // .then(readmeFile => {
-    //     //console.log(readmeFile);
-    //     return writeFile(readmeFile)
-    // })
-    .catch(err => {
-    console.log(err);
-    });
+// const employee = promptManager()
+//     //.then(promptMemberType)
+//     .then(obj => {
+//          const employee = new Employee(obj);
+//          return employee
+//     })
+//     .catch(err => {
+//     console.log(err);
+//     });
+
+
+
+// class Manager extends Employee {
+//     constructor (objEmployee, officeNumber) {
+//        super(objEmployee);
+//        this.officeNumber = officeNumber;
+//     }
+
+//     getRole() {
+//         return 'Manager'
+//     }
+// }
+
+class RunApplication {
+    constructor () {
+        this.manager = [];
+        this.engineer = [];
+        this.intern = []
+     }
+
+    getEmployee() {
+
+            inquirer
+            .prompt([
+            {
+                type: 'input',
+                name: 'name',
+                message: "What is the team manager's name?",
+            },
+            {
+                type: 'input',
+                name: 'id',
+                message: "What is your team manager's id?",
+            },
+            {
+                type: 'input',
+                name: 'email',
+                message: "What is the team manager's email?",
+            },
+            {
+                type: 'input',
+                name: 'officeNumber',
+                message: "What is the team manager's office number?",
+            },
+        ])
+        // destructure name from the prompt object
+        .then(answers => {
+            this.managerEmployee = new Manager(answers);
+            this.manager.push(this.managerEmployee);
+            console.log(this.manager);
+            // test the object creation
+            //console.log(this.currentEnemy, this.player);
+            // this.startNewBattle()
+        });
+    }
+
+    getEmployeeType() {
+
+        inquirer
+        .prompt([
+        {
+            type: 'input',
+            name: 'name',
+            message: "What is the team manager's name?",
+        }
+        ])
+        // destructure name from the prompt object
+        .then(answers => {
+        // // this.managerEmployee = new Manager(answers);
+        // this.manager.push(this.managerEmployee);
+        // console.log(this.manager);
+            // test the object creation
+            //console.log(this.currentEnemy, this.player);
+            // this.startNewBattle()
+        });
+
+    }
+}
+
+
+// initiqlize game object
+new RunApplication().getEmployee();
+
+
+
+
+// const questionsGenerations = userType => {
+
+//     return inquirer
+//     .prompt([
+//         {
+//             type: 'input',
+//             name: 'name',
+//             message: "What is the team manager's name?",
+//         },
+//         {
+//             type: 'input',
+//             name: 'id',
+//             message: "What is your team manager's id?",
+//         },
+//         {
+//             type: 'input',
+//             name: 'email',
+//             message: "What is the team manager's email?",
+//         },
+//         {
+//             type: 'input',
+//             name: 'phoneNumber',
+//             message: "What is the team manager's office number?",
+//         }
+//     ]);
+
+// }
+    
+
+// const promptQuestionsManager = () => {
+    
+//     return inquirer
+//     .prompt(questionsGenerations("Manager"))
+//     .then (
+//     // destructure name from the prompt object
+//     employeeObj => {
+//         const employee = new Employee(employeeObj);
+
+//         // test the object creation
+//         //console.log(this.currentEnemy, this.player);
+//         //this.startNewBattle()
+//     });
+
+    
+// }
+
+// promptQuestionsManager();
 
