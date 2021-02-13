@@ -1,4 +1,5 @@
 const inquirer = require('inquirer');
+const Employee = require('./lib/Employee');
 
 
 var test = "Engineer";
@@ -45,7 +46,6 @@ const promptMemberType = managerAnswers  => {
         }
 
          
-
      //console.log (managerAnswers)
      // Prompt the player
      return inquirer.prompt([
@@ -119,7 +119,11 @@ const memberDetails = memberDetails  => {
 
 
 promptManager()
-    .then(promptMemberType)
+    //.then(promptMemberType)
+    .then(obj=> {
+         const employee = new Employee(obj);
+         return employee
+    })
     .then(memberDetails)
     .then(answers => {
         //console.log(answers)
