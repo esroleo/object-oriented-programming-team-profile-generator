@@ -5,11 +5,11 @@ test('creates a intern object', () => {
     const obj = {
         name: "esteban",
         id: 1234, 
-        email: "esroleo@gmail.com"
+        email: "esroleo@gmail.com",
+        school: "Universidad de Puerto Rico"
     }
 
-    const school = "Universidad de Puerto Rico"
-    const intern = new Intern(obj, school);
+    const intern = new Intern(obj);
     expect(intern.name).toEqual(expect.any(String));
     expect(intern.id).toEqual(expect.any(Number));
     expect(intern.email).toEqual(expect.any(String));
@@ -22,7 +22,8 @@ test("gets intern's school", () => {
     const obj = {
         name: "esteban",
         id: 1234, 
-        email: "esroleo@gmail.com"
+        email: "esroleo@gmail.com",
+        school: "Universidad de Puerto Rico"
     }
 
     const school = "Universidad de Puerto Rico"
@@ -37,7 +38,8 @@ test("gets intern's school", () => {
     const obj = {
         name: "esteban",
         id: 1234, 
-        email: "esroleo@gmail.com"
+        email: "esroleo@gmail.com",
+        school: "Universidad de Puerto Rico"
     }
 
     const gitHub = "esroleo"

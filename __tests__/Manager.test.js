@@ -22,11 +22,11 @@ test('creates a manager object', () => {
     const obj = {
         name: "esteban",
         id: 1234, 
-        email: "esroleo@gmail.com"
+        email: "esroleo@gmail.com",
+        officeNumber: "12345"
     }
 
-    const officeNumber = "416-123-4567"
-    const manager = new Manager(obj, officeNumber);
+    const manager = new Manager(obj);
     expect(manager.getRole()).toEqual(expect.any(String));
     //console.log(manager.getRole());
 });
