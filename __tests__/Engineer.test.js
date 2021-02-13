@@ -1,7 +1,7 @@
 const Engineer = require('../lib/Engineer.js');
 
 
-test('creates a manager object', () => {
+test('creates a engineer object', () => {
     const obj = {
         name: "esteban",
         id: 1234, 
@@ -27,7 +27,7 @@ test("gets github's engineer url path", () => {
     const gitHub = "esroleo"
     const engineer = new Engineer(obj, gitHub);
     expect(engineer.getGitHub()).toEqual(expect.any(String));
-    console.log(engineer.getGitHub());
+    //console.log(engineer.getGitHub());
 });
 
 
