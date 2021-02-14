@@ -34,21 +34,56 @@ class RunApplication {
                 type: 'input',
                 name: 'name',
                 message: "What is the team manager's name?",
+                validate: managersName => {
+                    if (managersName) {
+                      return true;
+                    } else {
+                      console.log("Please enter your manager's name");
+                      return false;
+                    }
+                  }
+
+                  
             },
+
             {
                 type: 'input',
                 name: 'id',
                 message: "What is your team manager's id?",
+                validate: managersName => {
+                    if (managersName) {
+                      return true;
+                    } else {
+                      console.log("Please enter your manager's id");
+                      return false;
+                    }
+                  }
             },
             {
                 type: 'input',
                 name: 'email',
                 message: "What is the team manager's email?",
+                validate: managersName => {
+                    if (managersName) {
+                      return true;
+                    } else {
+                      console.log("Please enter your manager's email");
+                      return false;
+                    }
+                  }
             },
             {
                 type: 'input',
                 name: 'officeNumber',
                 message: "What is the team manager's office number?",
+                validate: managersName => {
+                    if (managersName) {
+                      return true;
+                    } else {
+                      console.log("Please enter your manager's office number");
+                      return false;
+                    }
+                  }
             },
         ])
         // destructure name from the prompt object
@@ -107,21 +142,53 @@ class RunApplication {
                     type: 'input',
                     name: 'name',
                     message: "What is the intern's name?",
+                    validate: managersName => {
+                        if (managersName) {
+                          return true;
+                        } else {
+                          console.log("Please enter your intern's name");
+                          return false;
+                        }
+                      }
                 },
                 {
                     type: 'input',
                     name: 'id',
                     message: "What is the intern's id?",
+                    validate: managersName => {
+                        if (managersName) {
+                          return true;
+                        } else {
+                          console.log("Please enter your intern's id");
+                          return false;
+                        }
+                      }
                 },
                 {
                     type: 'input',
                     name: 'email',
                     message: "What is the intern's email?",
+                    validate: managersName => {
+                        if (managersName) {
+                          return true;
+                        } else {
+                          console.log("Please enter your intern's email");
+                          return false;
+                        }
+                      }
                 },
                 {
                     type: 'input',
                     name: 'school',
                     message: "What is the intern's school name?",
+                    validate: managersName => {
+                        if (managersName) {
+                          return true;
+                        } else {
+                          console.log("Please enter your intern's school name");
+                          return false;
+                        }
+                      }
                 },
             ])
             .then(answers => {
@@ -147,21 +214,53 @@ class RunApplication {
                     type: 'input',
                     name: 'name',
                     message: "What is the engineers's name?",
+                    validate: managersName => {
+                        if (managersName) {
+                          return true;
+                        } else {
+                          console.log("Please enter your engineer's name");
+                          return false;
+                        }
+                      }
                 },
                 {
                     type: 'input',
                     name: 'id',
                     message: "What is the engineers's id?",
+                    validate: managersName => {
+                        if (managersName) {
+                          return true;
+                        } else {
+                          console.log("Please enter your engineer's id");
+                          return false;
+                        }
+                      }
                 },
                 {
                     type: 'input',
                     name: 'email',
                     message: "What is the engineers's email?",
+                    validate: managersName => {
+                        if (managersName) {
+                          return true;
+                        } else {
+                          console.log("Please enter your engineer's email");
+                          return false;
+                        }
+                      }
                 },
                 {
                     type: 'input',
                     name: 'gitHub',
                     message: "What is the engineers's GitHub username?",
+                    validate: managersName => {
+                        if (managersName) {
+                          return true;
+                        } else {
+                          console.log("Please enter your engineer's GitHub username");
+                          return false;
+                        }
+                      }
                 },
                 
             ])
