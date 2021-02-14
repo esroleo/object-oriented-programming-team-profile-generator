@@ -16,8 +16,6 @@ test('creates a intern object', () => {
     expect(intern.school).toEqual(expect.any(String));
 });
 
-
-
 test("gets intern's school", () => {
     const obj = {
         name: "esteban",
