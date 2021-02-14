@@ -46,7 +46,7 @@ class HtmlGenerator {
                     <h3 class="card-title">${this.getManagerRole(objManager)}</h3>
                     <ul class="list-group list-group-flush">
                     <li class="list-group-item">ID: ${id}</li>
-                    <li class="list-group-item">Email: ${email}</li>
+                    <li class="list-group-item">Email: <a href="mailto:${email}">${email}</a> </li>
                     <li class="list-group-item">Office Number: ${officeNumber}</li>
                     </ul>
                 </div>
@@ -67,8 +67,8 @@ class HtmlGenerator {
                     <h3 class="card-title">${this.getEngineerRole(objEngineer)}</h3>
                     <ul class="list-group list-group-flush">
                     <li class="list-group-item">ID: ${id}</li>
-                    <li class="list-group-item">Email: ${email}</li>
-                    <li class="list-group-item">Github: ${gitHub}</li>
+                    <li class="list-group-item">Email: <a href="mailto:${email}">${email}</a> </li>
+                    <li class="list-group-item">Github: <a href="https://github.com/${gitHub}/" target="_blank">GitHub</a> </li>
                     </ul>
                 </div>
             </div>
@@ -88,7 +88,7 @@ class HtmlGenerator {
                     <h3 class="card-title">${this.getInternRole(objEngineer)}</h3>
                     <ul class="list-group list-group-flush">
                     <li class="list-group-item">ID: ${id}</li>
-                    <li class="list-group-item">Email: ${email}</li>
+                    <li class="list-group-item">Email: <a href="mailto:${email}">${email}</a> </li>
                     <li class="list-group-item">School: ${school}</li>
                     </ul>
                 </div>
