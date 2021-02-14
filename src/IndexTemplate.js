@@ -51,7 +51,26 @@ class HtmlGenerator {
         </div>
         `;
         })
-        .join('')}`
+        .join('')}
+
+        ${objEngineer
+        .filter(({ name }) => name) 
+        .map(({ name, id, email, gitHub }) => {
+            return `
+            <div class="card-body">
+            <h5 class="card-title">${name}</h5>
+            <h5 class="card-title">${this.getEngineerRole(objEngineer)}</h5>
+            <ul class="list-group list-group-flush">
+            <li class="list-group-item">ID: ${id}</li>
+            <li class="list-group-item">Email: ${email}</li>
+            <li class="list-group-item">Github: ${gitHub}</li>
+            </ul>
+        </div>
+        `;
+        })
+        .join('')}
+
+        `
    }
 
 
@@ -61,6 +80,22 @@ class HtmlGenerator {
     return this.manager.getRole()
 
    }
+
+   getEngineerRole(objEngineer) {
+
+    this.engineer = new Engineer(objEngineer)
+    return this.engineer.getRole()
+
+   }
+
+
+   getInternRole(objIntern) {
+
+    this.intern = new Manager(objIntern)
+    return this.intern.getRole()
+
+   }
+
 
    iterateEngineer(objEngineer) {
 
