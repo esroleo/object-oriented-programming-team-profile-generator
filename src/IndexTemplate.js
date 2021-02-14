@@ -33,6 +33,28 @@ class HtmlGenerator {
         `
    } 
 
+   getHtmlTest(objManager, objEngineer, objIntern) {
+       
+    return `${objManager
+        .filter(({ name }) => name) // check for the property name, if exist add card for manager
+        .map(({ name, id, email, officeNumber }) => {
+        return `
+
+        <div class="card-body">
+            <h5 class="card-title">${name}</h5>
+            <h5 class="card-title">${this.getManagerRole(objManager)}</h5>
+            <ul class="list-group list-group-flush">
+            <li class="list-group-item">ID: ${id}</li>
+            <li class="list-group-item">Email: ${email}</li>
+            <li class="list-group-item">Office Number: ${officeNumber}</li>
+            </ul>
+        </div>
+        `;
+        })
+        .join('')}`
+   }
+
+
    getManagerRole(objManager) {
 
     this.manager = new Manager(objManager)

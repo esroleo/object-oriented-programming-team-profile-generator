@@ -211,7 +211,8 @@ class RunApplication {
 
         //console.log(objManager[0].name)
         const htmlgenerator = new HtmlGenerator()
-        console.log(htmlgenerator.getHtml(objManager, objEngineer, objIntern))
+        //console.log(htmlgenerator.getHtml(objManager, objEngineer, objIntern))
+        console.log(htmlgenerator.getHtmlTest(objManager, objEngineer, objIntern))
         
         // console.table(this.manager)
         // console.table(this.intern)
