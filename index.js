@@ -13,6 +13,9 @@ const HtmlGenerator = require('./src/IndexTemplate');
 
 
 
+
+
+
 class RunApplication {
     constructor () {
         this.manager = [];
@@ -202,10 +205,8 @@ class RunApplication {
                 //  ${console.log(this.manager[0].name)}
                 //  ${console.log(this.intern)}
                 //  ${console.log(this.engineer)}`
-            
             }
         });
-    
     }
 
     addHtmTemplate(objManager, objEngineer, objIntern) {
@@ -219,9 +220,11 @@ class RunApplication {
         // console.table(this.intern)
         // console.table(this.engineer)
     }
-  
-}
 
+
+
+
+}
 
 // initiqlize game object
 new RunApplication().getEmployee();
