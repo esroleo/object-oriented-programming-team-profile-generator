@@ -39,15 +39,18 @@ class HtmlGenerator {
         .filter(({ name }) => name) // check for the property name, if exist add card for manager
         .map(({ name, id, email, officeNumber }) => {
         return `
-
-        <div class="card-body">
-            <h5 class="card-title">${name}</h5>
-            <h5 class="card-title">${this.getManagerRole(objManager)}</h5>
-            <ul class="list-group list-group-flush">
-            <li class="list-group-item">ID: ${id}</li>
-            <li class="list-group-item">Email: ${email}</li>
-            <li class="list-group-item">Office Number: ${officeNumber}</li>
-            </ul>
+        <div class="col-sm">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title">${name}</h3>
+                    <h3 class="card-title">${this.getManagerRole(objManager)}</h3>
+                    <ul class="list-group list-group-flush">
+                    <li class="list-group-item">ID: ${id}</li>
+                    <li class="list-group-item">Email: ${email}</li>
+                    <li class="list-group-item">Office Number: ${officeNumber}</li>
+                    </ul>
+                </div>
+            </div>
         </div>
         `;
         })
@@ -56,22 +59,56 @@ class HtmlGenerator {
         ${objEngineer
         .filter(({ name }) => name) 
         .map(({ name, id, email, gitHub }) => {
-            return `
-            <div class="card-body">
-            <h5 class="card-title">${name}</h5>
-            <h5 class="card-title">${this.getEngineerRole(objEngineer)}</h5>
-            <ul class="list-group list-group-flush">
-            <li class="list-group-item">ID: ${id}</li>
-            <li class="list-group-item">Email: ${email}</li>
-            <li class="list-group-item">Github: ${gitHub}</li>
-            </ul>
+        return `
+        <div class="col-sm">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title">${name}</h3>
+                    <h3 class="card-title">${this.getEngineerRole(objEngineer)}</h3>
+                    <ul class="list-group list-group-flush">
+                    <li class="list-group-item">ID: ${id}</li>
+                    <li class="list-group-item">Email: ${email}</li>
+                    <li class="list-group-item">Github: ${gitHub}</li>
+                    </ul>
+                </div>
+            </div>
         </div>
         `;
         })
         .join('')}
 
+        ${objIntern
+        .filter(({ name }) => name) 
+        .map(({ name, id, email, school }) => {
+        return `
+        <div class="col-sm">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title">${name}</h3>
+                    <h3 class="card-title">${this.getInternRole(objEngineer)}</h3>
+                    <ul class="list-group list-group-flush">
+                    <li class="list-group-item">ID: ${id}</li>
+                    <li class="list-group-item">Email: ${email}</li>
+                    <li class="list-group-item">School: ${school}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        `;
+        })
+        .join('')}
+
+
+<!-- End of row -->
+        </div>
+</div>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script src="./assets/js/script.js"></script>
+</body>
+</html>
         `
-   }
+}
 
 
    getManagerRole(objManager) {
