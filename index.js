@@ -8,160 +8,10 @@ const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 
-
-// *** Manager's response area *** //
-const promptManager = () => {
-        
-    // Prompt the player
-    return inquirer.prompt([
-
-        {
-            type: 'input',
-            name: 'name',
-            message: "What is the team manager's name?",
-        },
-        {
-            type: 'input',
-            name: 'id',
-            message: "What is your team manager's id?",
-        },
-        {
-            type: 'input',
-            name: 'email',
-            message: "What is the team manager's email?",
-        },
-        {
-            type: 'input',
-            name: 'phoneNumber',
-            message: "What is the team manager's office number?",
-        }
-    ])//.then( answers => {
-    //    console.log(answers);
-    // })
-}
-
-// *** Call Employee Oject population *** //
-
-// const employee = new Employee(
-//     promptManager()
-//     .then(answers => {
-//         return answers
-
-//     })
-//     .catch(err => {
-//         console.log(err);
-//         })
-//     );
-
-// console.log(employee);
+// *** Import HTML generator *** //
+const HtmlGenerator = require('./src/IndexTemplate');
 
 
-
-
-// *** Team members response area *** //
-
-const promptMemberType = managerAnswers  => {
-
-        // If there's no 'managerAnswers object' array property, create one
-        if (!managerAnswers.teamMembers) {
-            managerAnswers.teamMembers = [];
-        }
-
-         
-     //console.log (managerAnswers)
-     // Prompt the player
-     return inquirer.prompt([
-
-        {
-            type: 'list',
-            name: 'teamName',
-            message: "Which type of member would you like to add?",
-            choices: ['Engineer', 'Intern']
-        }
-
-    ]).then(memberType => {
-        managerAnswers.teamMembers.push(memberType);
-        console.log(managerAnswers);
-        console.log(managerAnswers.teamMembers[0].teamName);
-       
-        return managerAnswers
-    });
-
-    
-
-
-}
-
-const memberDetails = memberDetails  => {
-    //console.log("last set of questions" + memberDetails)
-
-
-}
-
-
-
-// const promptTeamMembers = readManagerAnswers => {
-//     // If there's no 'projects' array property, create one
-//    if (!readManagerAnswers.members) {
-//     readManagerAnswers.members = [];
-//    }
-
-//         return inquirer.prompt([
-
-//             {
-//                 type: 'input',
-//                 name: 'addTip',
-//                 message: 'Provide a description on how to achieve a the step/tip',
-//             },
-//             {
-//                 type: 'input',
-//                 name: 'addPicture',
-//                 message: 'Provide a snapshot name of step if applicable?',
-//             },
-//             {
-//                 type: 'confirm',
-//                 name: 'tipConfirmation',
-//                 message: 'Would you like to add any other tips to your project?',
-//                 default: false
-//             },
-//         ]).then(projectData => {
-//             readMeAnswers.projects.push(projectData);
-//             if (projectData.tipConfirmation) {
-//             return promptProjectTips(readMeAnswers);
-//             } else {
-//             return readMeAnswers;
-//             }
-//         });
-// };
-
-
-
-//promptManager();
-//promptMemberType();
-
-
-// const employee = promptManager()
-//     //.then(promptMemberType)
-//     .then(obj => {
-//          const employee = new Employee(obj);
-//          return employee
-//     })
-//     .catch(err => {
-//     console.log(err);
-//     });
-
-
-
-// class Manager extends Employee {
-//     constructor (objEmployee, officeNumber) {
-//        super(objEmployee);
-//        this.officeNumber = officeNumber;
-//     }
-
-//     getRole() {
-//         return 'Manager'
-//     }
-// }
 
 class RunApplication {
     constructor () {
@@ -200,7 +50,7 @@ class RunApplication {
         .then(answers => {
             this.managerEmployee = new Manager(answers);
             this.manager.push(this.managerEmployee);
-            console.log(this.manager)
+            //console.log(this.manager)
             //console.log("Manager's information" + this.manager.name);
             this.getEmployeeType();
             // test the object creation
@@ -241,7 +91,7 @@ class RunApplication {
     }
 
      getFurtherInformation() {
-        console.log(this.employeeType );
+        //console.log(this.employeeType );
 
         if (this.employeeType === 'Intern') {
            // console.log("This is a " + this.employeeType) 
@@ -345,13 +195,27 @@ class RunApplication {
             if (answer.addAnotherEmployee) {
               this.getEmployeeType();
             } else {
-                return `
-                ${console.table(this.manager)}
-                ${console.table(this.intern)}
-                ${console.table(this.engineer)}`
-              }
-          });
+                //this.addHtmTemplate(this.manager, this.engineer, this.intern);
+                this.addHtmTemplate(this.manager, this.engineer, this.intern)
+                // return `
+                //  ${console.log(this.manager[0].name)}
+                //  ${console.log(this.intern)}
+                //  ${console.log(this.engineer)}`
+            
+            }
+        });
     
+    }
+
+    addHtmTemplate(objManager, objEngineer, objIntern) {
+
+        //console.log(objManager[0].name)
+        const htmlgenerator = new HtmlGenerator()
+        console.log(htmlgenerator.getHtml(objManager, objEngineer, objIntern))
+        
+        // console.table(this.manager)
+        // console.table(this.intern)
+        // console.table(this.engineer)
     }
   
 }
@@ -359,56 +223,3 @@ class RunApplication {
 
 // initiqlize game object
 new RunApplication().getEmployee();
-
-
-
-
-// const questionsGenerations = userType => {
-
-//     return inquirer
-//     .prompt([
-//         {
-//             type: 'input',
-//             name: 'name',
-//             message: "What is the team manager's name?",
-//         },
-//         {
-//             type: 'input',
-//             name: 'id',
-//             message: "What is your team manager's id?",
-//         },
-//         {
-//             type: 'input',
-//             name: 'email',
-//             message: "What is the team manager's email?",
-//         },
-//         {
-//             type: 'input',
-//             name: 'phoneNumber',
-//             message: "What is the team manager's office number?",
-//         }
-//     ]);
-
-// }
-    
-
-// const promptQuestionsManager = () => {
-    
-//     return inquirer
-//     .prompt(questionsGenerations("Manager"))
-//     .then (
-//     // destructure name from the prompt object
-//     employeeObj => {
-//         const employee = new Employee(employeeObj);
-
-//         // test the object creation
-//         //console.log(this.currentEnemy, this.player);
-//         //this.startNewBattle()
-//     });
-
-    
-// }
-
-// promptQuestionsManager();
-
-
