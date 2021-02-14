@@ -5,6 +5,8 @@ const Intern = require('../lib/Intern');
 class HtmlGenerator {
 
    getHtml(objManager, objEngineer, objIntern) {
+
+
        
     return `${objManager
         .filter(({ name }) => name) // check for the property name, if exist add card for manager
@@ -36,7 +38,7 @@ class HtmlGenerator {
             <div class="col-sm">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">${name}</h3>
+                        <h3 class="card-title">${name}}</h3>
                         <h3 class="card-title"> <i class="fas fa-mug-hot"></i> ${this.getManagerRole(objManager)}</h3>
                     </div>
                     <div class="card-body">
@@ -110,6 +112,10 @@ class HtmlGenerator {
         `
 }
 
+    getNameUser(objManager) {
+    this.manager = new Manager(objManager[0])
+    return this.manager.getName()
+   }
 
    getManagerRole(objManager) {
     this.manager = new Manager(objManager)
