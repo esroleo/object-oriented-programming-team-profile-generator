@@ -83,7 +83,7 @@ class HtmlGenerator {
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">${name}</h3>
-                    <h3 class="card-title"><i class="fas fa-user-graduate"></i> ${this.getSchool(objIntern)}</h3>
+                    <h3 class="card-title"><i class="fas fa-user-graduate"></i> ${this.getInternRole(objIntern)}</h3>
                 </div>
                 <div class="card-body">
                     <ul class="list-group list-group-flush">
@@ -122,9 +122,9 @@ class HtmlGenerator {
    }
 
 
-   getSchool(objIntern) {
+   getInternRole(objIntern) {
     this.intern = new Intern(objIntern)
-    return this.intern.getSchool()
+    return this.intern.getRole()
    }
 
 }
