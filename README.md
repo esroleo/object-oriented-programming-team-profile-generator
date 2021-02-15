@@ -51,7 +51,7 @@ Run node index.js and answer the prompts
 <a name="credits"></a>
 ## 5. Credits
 
-Thank you for Esteban Romero to work on this project
+Thank you Esteban Romero for working on this project
 
 <a name="licenses"></a>
 ## 6. Licenses
