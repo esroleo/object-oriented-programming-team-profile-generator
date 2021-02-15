@@ -44,6 +44,9 @@ Run node index.js and answer the prompts
 ### How to run
 ![step](./assets/images/how-to-run.JPG?raw=true "how-to-run.JPG")
 
+### Sample team builder HTML
+
+![step](./assets/images/dist-index-html.JPG?raw=true "dist-index-html.JPG")
 
 <a name="credits"></a>
 ## 5. Credits
