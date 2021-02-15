@@ -20,9 +20,11 @@ const {writeFile} = require('./utils/generate-html');
 
 class RunApplication {
     constructor () {
+        // *** Hold object arrays *** //
         this.manager = [];
         this.engineer = [];
         this.intern = []
+        // *** Used for conditional chesk **//
         this.employeeType = "";
      }
 
@@ -86,16 +88,12 @@ class RunApplication {
                   }
             },
         ])
-        // destructure name from the prompt object
+        // move answers to their appropiate object and push it to the respective array
         .then(answers => {
             this.managerEmployee = new Manager(answers);
             this.manager.push(this.managerEmployee);
-            //console.log(this.manager)
-            //console.log("Manager's information" + this.manager.name);
             this.getEmployeeType();
-            // test the object creation
-            //console.log(this.currentEnemy, this.player);
-            // this.startNewBattle()
+
         });
     }
 
@@ -110,31 +108,20 @@ class RunApplication {
             choices: ['Engineer', 'Intern']
         }
         ])
-        // destructure name from the prompt object
+        // if answer is true go to next step
         .then(answers => {
             const {employeeType} = answers;
             this.employeeType = employeeType;
             this.getFurtherInformation();
-            //console.log(employeeType)
-            //console.log(employeeType);
-           //
-
-
-        // // this.managerEmployee = new Manager(answers);
-        // this.manager.push(this.managerEmployee);
-        // console.log(this.manager);
-            // test the object creation
-            //console.log(this.currentEnemy, this.player);
-            // this.startNewBattle()
         });
 
     }
 
      getFurtherInformation() {
-        //console.log(this.employeeType );
+       
 
-        if (this.employeeType === 'Intern') {
-           // console.log("This is a " + this.employeeType) 
+        if (this.employeeType === 'Intern') { // If intern promot different questiosn
+           
 
             inquirer
             .prompt([
@@ -191,23 +178,13 @@ class RunApplication {
                       }
                 },
             ])
-            .then(answers => {
-                // new object 
+            .then(answers => { // move answers to their appropiate object and push it to the respective array
                 this.internEmployee = new Intern(answers);
-                //this.intern will be an array of objects
                 this.intern.push(this.internEmployee);
-                // console.log(this.intern)
-                // console.log(this.manager)
-                this.addAnotherEmployee();
-                //console.log("Manager's information" + this.manager.name);
-                //();
-                // test the object creation
-                //console.log(this.currentEnemy, this.player);
-                // this.startNewBattle()
+                this.addAnotherEmployee(); // ask user if they want to add another employee
             });
 
         } else if (this.employeeType === 'Engineer') {
-            //console.log("This is a " + this.employeeType) 
             inquirer
             .prompt([
                 {
@@ -264,24 +241,14 @@ class RunApplication {
                 },
                 
             ])
-            .then(answers => {
-                // new object 
+            .then(answers => { // move answers to their appropiate object and push it to the respective array
+
                 this.engineerEmployee = new Engineer(answers);
-                //this.intern will be an array of objects
                 this.engineer.push(this.engineerEmployee);
-                // console.log(this.manager)
-                // console.log(this.intern)
-                // console.log(this.engineer)
-                this.addAnotherEmployee();
-                
-                //console.log("Manager's information" + this.manager.name);
-                //();
-                // test the object creation
-                //console.log(this.currentEnemy, this.player);
-                // this.startNewBattle()
+                this.addAnotherEmployee(); // ask user if they want to add another employee
             });
         } else {
-            // Not required - markes as required field in inquirer
+            // placeholde else, not required.
         }
     }
 
@@ -300,31 +267,23 @@ class RunApplication {
             if (answer.addAnotherEmployee) {
               this.getEmployeeType();
             } else {
-                //this.addHtmTemplate(this.manager, this.engineer, this.intern);
+                // if no further employees, move to next step. Add templated html
                 this.addHtmTemplate(this.manager, this.engineer, this.intern)
-                // return `
-                //  ${console.log(this.manager[0].name)}
-                //  ${console.log(this.intern)}
-                //  ${console.log(this.engineer)}`
             }
         });
     }
 
     addHtmTemplate(objManager, objEngineer, objIntern) {
 
-        //console.log(objManager[0].name)
+       // createa html generator object
         const htmlgenerator = new HtmlGenerator()
-        //console.log(htmlgenerator.getHtml(objManager, objEngineer, objIntern))
-        //console.log(htmlgenerator.getHtml(objManager, objEngineer, objIntern))
+        // pass all of our objects to the prototype function get html and pass the output to writeHtml in one step.
         this.writeHtml(htmlgenerator.getHtml(objManager, objEngineer, objIntern))
-        // console.table(this.manager)
-        // console.table(this.intern)
-        // console.table(this.engineer)
     }
 
     writeHtml(htmlTemplate) {
-        writeFile(htmlTemplate)
-        //console.log(htmlTemplate)
+        writeFile(htmlTemplate) // write HTML and application is now completed
+        // *** End of application here *** //
     }
 
 
