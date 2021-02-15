@@ -1,0 +1,23 @@
+header {
+    display: flex; /* Flex container to display the child elements as flex with space between and wrap */
+    justify-content: center;
+    flex-wrap: wrap;
+    list-style: none;
+    background-color:  lightgray;   
+    padding-bottom: 30px;
+    margin-bottom: 1rem;
+}
+
+
+header h1 {
+    /* At bigger screens create space at left of h1 on header */
+    padding-top: 40px;
+    text-align: center;
+  }
+
+  
+
+
+  .list-group {
+    border: 1px solid rgba(0,0,0,.125);
+  }
