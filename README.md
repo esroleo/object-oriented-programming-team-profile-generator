@@ -38,7 +38,12 @@ Run node index.js and answer the prompts
 <a name="features"></a>
 ## 4. Features
 
-![caption](./assets/images/.gif)
+### File Structure
+![step](./assets/images/file-structure.JPG?raw=true "file-structure.JPG")
+
+### How to run
+![step](./assets/images/how-to-run.JPG?raw=true "how-to-run.JPG")
+
 
 <a name="credits"></a>
 ## 5. Credits
@@ -52,6 +57,9 @@ mit
 
 <a name="commandInstall"></a>
 ## 7. Install Command
+
+### Dependencies are Inquirer and Jest
+### npm install command will install dependencies
 
 npm i
 
